@@ -21,7 +21,7 @@ ENV PHP_VERSION=7.1 \
 ############################################
 ##    install required software for PHP   ##
 ############################################
-RUN yum install -y yum-utils && \
+RUN yum install --disablerepo=rhel-7-server-htb-rpms -y yum-utils && \
     yum-config-manager --disable * && \
     yum-config-manager --enable rhel-server-rhscl-7-rpms && \
     yum-config-manager --enable rhel-7-server-rpms && \
@@ -30,7 +30,7 @@ RUN yum install -y yum-utils && \
                   rh-php71-php-gd rh-php71-php-intl rh-php71-php-ldap rh-php71-php-mbstring rh-php71-php-pdo \
                   rh-php71-php-process rh-php71-php-soap rh-php71-php-opcache rh-php71-php-xml \
                   rh-php71-php-gmp rh-php71-php-pecl-apcu httpd24-mod_ssl" && \
-    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
+    yum install --disablerepo=rhel-7-server-htb-rpms -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y
 
